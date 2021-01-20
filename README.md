@@ -1,70 +1,50 @@
-# Getting Started with Create React App
+# Pokelist
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Pikachu](https://cdn.pixabay.com/photo/2020/08/29/16/08/pikachu-5527377_960_720.jpg)
 
-## Available Scripts
 
-In the project directory, you can run:
+> Desafio do bootcamp da **We Can Code Academy**
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# Desafio
+Seu desafio é criar um app para buscar pokémons, filtrando por tipos, além de visualizar mais informações dos personagens.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Requisitos:
+- Um pokemon não pode ser capturado mais de uma vez;<br>
+- Um pokemon só pode ser solto uma vez;<br>
+- A busca deve ser feita a cada caractere digitado na barra de pesquisa;
+- cada pagina deve conter de 20 ou 25 pokemons;
+- Deve ter um indicador que a pagina está carregando e/ou os elementos da página;
+- A lista com meus pokemons devem ser exibidas mesmo se a página for carregada;
 
-### `npm test`
+## Requisitos extras:
+- Criar filtros de busca;
+- Criar modelos de ordenação;
+- Separem seus elementos em componentes;
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Techs: 
+- React;
 
-### `npm run build`
+## Instalação
+- ` Git Clone` na sua maquina ;
+- No Prompt digite o comando `npm install`;
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Para iniciar o server digite o comando `npm start`;
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Contribuindo com o projeto
+1. Faça o fork do projeto
 
-### `npm run eject`
+2. Faça o checkout na branch main
+`git checkout main`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+3. Crie uma branch para realizar suas modificações
+`git checkout -b feature/nome-da-sua-branch`
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4. Após realizar as modificações, use o comando`git add .`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+5. Faça o commit `git commit -m 'mensagem aqui'`
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+6. Faça o push `git push --set-upstream origin feature/nome-da-sua-branch`
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+7. Crie um novo Pull Request para a branch `feature/staging`
