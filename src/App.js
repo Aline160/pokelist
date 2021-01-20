@@ -4,10 +4,12 @@ import './App.css';
 import axios from 'axios'
 
 function App() {
-  
+  const [page,setPage] = useState(1118)
   const [pokemons,setPokemons]=useState([])
   const [myPokemons,setMyPokemons]=useState([])
   axios.get("https://pokeapi.co/api/v2/pokemon?offset=20&limit=20",{}).then(response=>{setPokemons(Object.values(response.data.results))})
+  
+  
   return (
     <div className="App">
       <header className="App-header">
