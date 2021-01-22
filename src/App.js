@@ -18,21 +18,19 @@ function App() {
   const [value,setValue]=useState([])
   const [dados,setDados]= useState([])
    async function getPokemons(){
-    axios.get("https://pokeapi.co/api/v2/pokemon?limit=2",{}).then(response=>{setPokemons(Object.values(response.data.results))})
+    axios.get("https://pokeapi.co/api/v2/pokemon?limit=10",{}).then(response=>{setPokemons(response.data.results)})
  
   
 }
 
 async function  getInformation(nome){
-  
- const poke=await axios.get(`https://pokeapi.co/api/v2/pokemon/${nome}`,{}).then(p=>{
-  console.log(p.data.sprites.back_default)
-})
-return poke
+ 
+ const poke=await axios.get(`https://pokeapi.co/api/v2/pokemon/${nome}`,{})
 
+return poke;
 }
 
-function img(number){
+function imgPokemon(number){
   const img =`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${number}.png`
   return img
 }
@@ -56,11 +54,15 @@ useEffect(() => {
       <header className="App-header">
         <title>My PokeList</title>
       </header>
-      {pokemons.map(poke=>
-        <div>
-        <p>{poke.name}</p>
-       {getInformation(poke.name)}
-       
+
+
+      {pokemons.map((poke,index)=>
+      
+        <div className="card">
+          <p>{poke.name}</p>
+          <p>{console.log(getInformation(poke.name).then(a=>{return a.data.sprites}))}</p>
+        <img id="imga"  src={imgPokemon(index+1)}/>
+        
         </div>
       )}
 
