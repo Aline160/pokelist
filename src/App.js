@@ -6,6 +6,7 @@ import Routers from './components/Routers';
 import Loading from './components/layout/Loading';
 import {Card,Button} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Pagination from 'react-bootstrap-4-pagination';
 
 
 
@@ -17,16 +18,16 @@ function App() {
   const [nextUrl, setNextUrl] = useState('');
   const [prevUrl, setPrevUrl] = useState('');
   const [loading, setLoading] = useState(true);
+  const [currentPageNow,setCurrentPageNow]=useState(0)
+
+  const[pagina,setPagina]=useState(0)
 
 
-   async function getPokemons(){
-    axios.get("https://pokeapi.co/api/v2/pokemon?limit=40",{}).then(response=>{setPokemons(response.data.results)})
+   async function getPokemons(currentPageNow){
+    axios.get(`https://pokeapi.co/api/v2/pokemon?offset=${currentPageNow}&limit=20`,{}).then(response=>{setPokemons(response.data.results)})
 }
 
-  async function  getInformation(nome){
- const poke=await axios.get(`https://pokeapi.co/api/v2/pokemon/${nome}`,{})
-return poke;
-}
+ 
 
   function imgPokemon(number){
   const img =`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${number}.png`
@@ -34,51 +35,36 @@ return poke;
 }
 
 useEffect(() => {
-    setLoading(true)
-    getPokemons(currentPageUrl).then(res=>{
-    setLoading(false)
-    setNextUrl(currentPageUrl.next);
-    setPrevUrl(currentPageUrl.previous);
-    loadPokemon(currentPageUrl.results);
+  
+    getPokemons(currentPageNow)
 
-  })
-
-}, [currentPageUrl]);
-
-const next = async () => {
-  setLoading(true);
-  let data = await getPokemons(nextUrl);
-  await loadPokemon(data.results);
-  setNextUrl(data.next);
-  setPrevUrl(data.previous);
-  setLoading(false);
-}
-
-const prev = async () => {
-  if (!prevUrl) return;
-  setLoading(true);
-  let data = await getPokemons(prevUrl);
-  await loadPokemon(data.results);
-  setNextUrl(data.next);
-  setPrevUrl(data.previous);
-  setLoading(false);
-}
-
-const loadPokemon = async (data) => {
-  let getInformation = await Promise.all(data.map(async pokemon => {
-    let pokemonRecord = await getPokemons(currentPageUrl)
-    return pokemonRecord
-  }))
-  pokemons(getInformation);
-}
-
-if (loading) return "Aguarde um Pouco"
+}, [getPokemons]);
 
 
 
-  function catpurar(){
+let paginationConfig = {
+  totalPages: 1118,
+  currentPage:pagina,
+  showMax: 20,
+  size: "md",
+  threeDots: true,
+  prevNext: true,
+  previrus:true,
+  onClick:  async function (page) {
+    if(page==1){
+      page=0
+    }
+    setPagina(page)
+    setCurrentPageNow(page*20)
+   
+    
 
-  }
+    
+     
+   }
+};
+
+
 
   return (
     <div className="App">
@@ -92,6 +78,7 @@ if (loading) return "Aguarde um Pouco"
       
 
       <Card className="card" >
+  
       <Card.Img variant="top" id="imga" src={imgPokemon(index+1)} />
       <Card.Body className="cardBody" >
       <Card.Title>{poke.name}</Card.Title>
@@ -102,11 +89,8 @@ if (loading) return "Aguarde um Pouco"
       </Card.Body>
      </Card>
     )}
+<Pagination {...paginationConfig} />
 
-      <div className="btn">
-        <button onClick={prev}>Anterior</button>
-        <button onClick={next}>Próximo</button>
-      </div>
     </div>
 </div>
    
@@ -114,7 +98,6 @@ if (loading) return "Aguarde um Pouco"
   </div>
   
 );
-}
+        }
 
 export default App;
-  
